@@ -4,6 +4,7 @@
     "fullName": "Ashraf Ayman Abdel Majeed",
     "title": "GIS Software Developer",
     "roles": [
+      "Senior GIS Developer",
       "GIS Software Developer",
       "GIS Analyst",
       "GIS Specialist",
@@ -13,7 +14,7 @@
     "email": "ashrafayman219@gmail.com",
     "profileImage": "https://avatars.githubusercontent.com/u/140410745?v=4",
     "currentCompany": "Gulf Terminal",
-    "currentPosition": "GIS Developer",
+    "currentPosition": "Senior GIS Developer",
     "careerStart": "April 2022",
     "social": {
       "github": "https://github.com/ashrafayman219",
@@ -68,26 +69,93 @@
   ],
   "workExperience": [
     {
+      "id": "gulf-terminal-senior",
+      "company": "Gulf Terminal",
+      "position": "Senior GIS Developer",
+      "startDate": "September 2026",
+      "endDate": "Present",
+      "location": "Mansoura, Egypt",
+      "employmentType": "Full-time",
+      "website": "https://gulfterminal.com/",
+      "logo": "images/GT.png",
+      "latitude": 31.0409,
+      "longitude": 31.3785,
+      "responsibilities": [
+        "Lead GIS software design and development with the Esri suite and standard programming tools.",
+        "Own and extend the ArcGIS Maps SDK API library for 2D and 3D web apps and spatial analysis.",
+        "Write programming specifications and review results with project managers.",
+        "Work with SQL Server and PostgreSQL, and debug production issues as they appear."
+      ],
+      "skills": ["ArcGIS Maps SDK", "JavaScript", "Leaflet", "Mapbox", "Google Earth Studio", "SQL Server", "PostgreSQL"]
+    },
+    {
       "id": "gulf-terminal",
       "company": "Gulf Terminal",
       "position": "GIS Developer",
       "startDate": "May 2023",
-      "endDate": "Present",
+      "endDate": "August 2026",
       "location": "Mansoura, Egypt",
       "employmentType": "Full-time",
+      "website": "https://gulfterminal.com/",
       "logo": "images/GT.png",
+      "showOnMap": false,
       "latitude": 31.0409,
       "longitude": 31.3785,
       "responsibilities": [
         "Built a dynamic API library on the ArcGIS Maps SDK for JavaScript for 2D and 3D GIS web apps and spatial analysis.",
         "Design, develop, and maintain software with the Esri suite and standard programming tools.",
         "Write programming specifications for assigned tasks.",
-        "Work with RDBMS platforms including Microsoft SQL Server and PostgreSQL.",
-        "Update database designs as requirements change.",
+        "Work with SQL Server and PostgreSQL.",
         "Test systems and review results with project managers.",
         "Write source code, run validation tests, and debug issues as they appear."
       ],
-      "skills": ["ArcGIS Maps SDK", "JavaScript", "SQL Server", "PostgreSQL"]
+      "skills": ["ArcGIS Maps SDK", "JavaScript", "Leaflet", "Mapbox", "Google Earth Studio", "SQL Server", "PostgreSQL"]
+    },
+    {
+      "id": "upwork",
+      "company": "Upwork",
+      "position": "Sr. GIS Solutions Engineer",
+      "headline": "ArcGIS Pro, Esri GeoAI, Remote Sensing",
+      "startDate": "2024",
+      "endDate": "Present",
+      "location": "Remote",
+      "employmentType": "Freelance",
+      "workMode": "Remote",
+      "displayPlace": false,
+      "logo": "images/upwork_logo.jpg",
+      "showOnMap": false,
+      "latitude": 31.0409,
+      "longitude": 31.3785,
+      "summary": [
+        "Maps don't have limits. A good map tells an excellent story.",
+        "With over 4 years in GIS, I turn complex geospatial data into accurate, practical solutions for analysis, visualization, automation, and decision-making.",
+        "I help businesses, researchers, and organizations understand their spatial data, solve location-based problems, and get clear, actionable results. The work covers GIS development and interactive web apps, spatial analysis, GeoAI, remote sensing, LiDAR, and spatial data automation. I pick the stack from the problem, the workflow, and the outcome you need."
+      ],
+      "responsibilities": [
+        "Turn complex spatial data into clear insights and decision-ready outputs.",
+        "Build GIS workflows that cut manual work and keep results consistent.",
+        "Analyze locations, property, terrain, and spatial relationships to support planning.",
+        "Create interactive maps and GIS applications that make spatial information easier to explore.",
+        "Typical work: property and site analysis, location intelligence, terrain and elevation, remote sensing, spatial visualization, and GIS web apps.",
+        "I start from what the data or application needs to accomplish, then choose the analysis, tools, and workflow that fit."
+      ],
+      "skills": [
+        "ArcGIS API for JavaScript",
+        "Leaflet",
+        "Mapbox GL JS",
+        "ArcGIS Pro",
+        "QGIS",
+        "Python / ArcPy",
+        "GeoAI",
+        "Remote sensing",
+        "LiDAR",
+        "ArcGIS Enterprise",
+        "StoryMaps"
+      ],
+      "insights": {
+        "badge": "Top Rated",
+        "jss": 100
+      }
     },
     {
       "id": "aic",
@@ -161,6 +229,44 @@
     }
   ],
   "projects": [
+    {
+      "id": "ameriwater-territory-map",
+      "title": "AmeriWater Dealer Territory Map",
+      "subtitle": "Region-based ZIP3 viewer",
+      "category": "professional",
+      "year": "2026",
+      "company": "Upwork",
+      "status": "completed",
+      "featured": true,
+      "showOnMap": false,
+      "description": "An ArcGIS web app that maps AmeriWater dealer coverage across 854 ZIP3 territories, with region filters, dealer coloring, and a full-screen map workspace.",
+      "longDescription": "I built this dealer territory map as an Upwork freelance project for AmeriWater. It is a full-viewport ArcGIS 4.32 app that draws real ZIP boundaries from Esri's USA Boundaries service and colors each ZIP3 by dealer. Four sales regions sit as pills at the top: Brian Bates, Dave Tholin, Tommy LoVoi, and Med Water | Bates. You can select more than one region or state, switch Primary / Secondary / Show All dealer views, and click a territory for region, ZIP, and account details, including a Strategic badge where it applies. A bottom toolbar holds layers, search, basemaps, labels, scale, and a light or liquid-glass theme. Preferences stay in the browser. Administrators can refresh the 854 ZIP3 records from a CSV and deploy an updated data file.",
+      "technologies": ["ArcGIS API for JavaScript 4.32", "JavaScript", "HTML5", "CSS3", "Esri ZIP boundaries"],
+      "features": [
+        "854 ZIP3 territories on real Esri ZIP geometry",
+        "Four-region filter with multi-select pills",
+        "Primary, Secondary, and Show All dealer views",
+        "State chips combined with region filters, then auto-zoom to the result",
+        "Territory detail card with Strategic badge and dealer accounts",
+        "Search by dealer, ZIP3, or state",
+        "Gray, Streets, and Satellite basemaps",
+        "ZIP3 or dealer labels, dual-unit scale bar, and a live status bar",
+        "Light theme and liquid-glass theme, saved in the browser"
+      ],
+      "images": [
+        "images/AM-03.png",
+        "images/AM-01.png",
+        "images/AM-02.png"
+      ],
+      "demoUrl": null,
+      "githubUrl": null,
+      "tags": ["ArcGIS", "Territory mapping", "Dealer network", "ZIP3"],
+      "location": {
+        "latitude": 39.8283,
+        "longitude": -98.5795,
+        "name": "United States"
+      }
+    },
     {
       "id": "esri-library",
       "title": "esri-Library (APIs)",
@@ -332,9 +438,10 @@
       { "name": "QGIS" },
       { "name": "Leaflet" },
       { "name": "OpenLayers" },
+      { "name": "Mapbox" },
+      { "name": "Google Earth Studio" },
       { "name": "PostGIS" },
-      { "name": "PostgreSQL" },
-      { "name": "Mapbox" }
+      { "name": "PostgreSQL" }
     ],
     "programming": [
       { "name": "JavaScript" },

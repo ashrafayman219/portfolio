@@ -73,15 +73,68 @@
     return [job.employmentType, job.workMode].filter(Boolean).join(" · ");
   }
 
+  function jobSite(job) {
+    if (!job.website) return "";
+    const label = job.website.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    return `<p class="job-link"><a href="${escapeHtml(job.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></p>`;
+  }
+
   function jobWhen(job) {
-    const line = [job.company, job.location, dateRange(job.startDate, job.endDate), jobType(job)]
+    const place = job.displayPlace === false ? "" : job.location;
+    const type = job.displayPlace === false ? job.employmentType : jobType(job);
+    const line = [job.company, place, dateRange(job.startDate, job.endDate), type]
       .filter(Boolean)
       .join(" · ");
     const partner = job.partnerName ? `<p class="when">${escapeHtml(job.partnerName)}</p>` : "";
-    const site = job.website
-      ? `<p class="job-link"><a href="${escapeHtml(job.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(job.website.replace(/^https?:\/\//, "").replace(/\/$/, ""))}</a></p>`
-      : "";
+    const site = job.displayPlace === false ? "" : jobSite(job);
     return `<p class="when">${escapeHtml(line)}</p>${partner}${site}`;
+  }
+
+  function jobInsights(job) {
+    const info = job.insights;
+    if (!info) return "";
+    const jss = Number(info.jss) || 0;
+    const radius = 16;
+    const circ = 2 * Math.PI * radius;
+    const dash = (jss / 100) * circ;
+    const badge = info.badge
+      ? `<div class="insight-rated">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2.4 14.9 8.3l6.5.9-4.7 4.6 1.1 6.5L12 17.2l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z"/>
+          </svg>
+          <div>
+            <strong>${escapeHtml(info.badge)}</strong>
+            <span>Recognized talent</span>
+          </div>
+        </div>`
+      : "";
+    const score = info.jss != null
+      ? `<div class="insight-jss">
+          <div class="jss-wrap">
+            <svg class="jss-ring" viewBox="0 0 40 40" aria-hidden="true">
+              <circle class="jss-track" cx="20" cy="20" r="${radius}"></circle>
+              <circle class="jss-value" cx="20" cy="20" r="${radius}" stroke-dasharray="${dash} ${circ}"></circle>
+            </svg>
+            <strong>${jss}%</strong>
+          </div>
+          <div class="insight-jss-copy">
+            <strong>Job Success</strong>
+            <span>Client satisfaction score</span>
+          </div>
+        </div>`
+      : "";
+    if (!badge && !score) return "";
+    return `<div class="insights" aria-label="Upwork insights">${badge}${score}</div>`;
+  }
+
+  function jobHeadline(job) {
+    if (!job.headline) return "";
+    return `<p class="job-headline">${escapeHtml(job.headline)}</p>`;
+  }
+
+  function jobSummary(job) {
+    if (!job.summary || !job.summary.length) return "";
+    return job.summary.map((text) => `<p class="job-summary">${escapeHtml(text)}</p>`).join("");
   }
 
   function roleSkills(job) {
@@ -103,11 +156,21 @@
       ${roleSkills(job)}`;
   }
 
+  function expandButton() {
+    return `<button type="button" class="expando-btn" aria-expanded="false" aria-label="Show details">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </button>`;
+  }
+
   const IMG_FALLBACK = "this.onerror=null;this.style.background='#d5dde4';this.removeAttribute('src');";
 
   const PortfolioUI = {
     data: null,
     filter: "all",
+    galleryImages: [],
+    galleryIndex: 0,
 
     render(data) {
       this.data = data;
@@ -187,7 +250,7 @@
                 <p>${escapeHtml(project.description)}</p>
                 <div class="card-actions">
                   <button type="button" class="btn btn-primary" data-open-project="${escapeHtml(project.id)}">Details</button>
-                  <button type="button" class="btn btn-outline" data-map-project="${escapeHtml(project.id)}">Show on map</button>
+                  ${project.showOnMap === false ? "" : `<button type="button" class="btn btn-outline" data-map-project="${escapeHtml(project.id)}">Show on map</button>`}
                 </div>
               </div>
             </article>`;
@@ -239,7 +302,7 @@
       const thumbs = images
         .map(
           (src, index) =>
-            `<button type="button" class="${index === 0 ? "is-active" : ""}" data-thumb="${escapeHtml(src)}">
+            `<button type="button" class="${index === 0 ? "is-active" : ""}" data-thumb-index="${index}">
               <img src="${escapeHtml(src)}" alt="" />
             </button>`
         )
@@ -261,11 +324,19 @@
         ? `<p><strong>With:</strong> ${escapeHtml(project.collaborators.join(", "))}</p>`
         : "";
 
+      const galleryNav =
+        !video && images.length > 1
+          ? `<button type="button" class="gallery-nav gallery-prev" data-gallery-step="-1" aria-label="Previous image">‹</button>
+             <button type="button" class="gallery-nav gallery-next" data-gallery-step="1" aria-label="Next image">›</button>
+             <p class="gallery-count" id="galleryCount">1 / ${images.length}</p>`
+          : "";
+
       body.innerHTML = `
         <h2 id="modalTitle">${escapeHtml(project.title)}</h2>
         <p class="project-meta">${escapeHtml(project.company)} · ${escapeHtml(project.year)} · ${escapeHtml(project.location.name)}</p>
         <div class="modal-gallery">
           ${video || `<img id="modalHero" src="${escapeHtml(main)}" alt="${escapeHtml(project.title)}" />`}
+          ${galleryNav}
         </div>
         ${images.length > 1 ? `<div class="thumbs">${thumbs}</div>` : ""}
         <p>${escapeHtml(project.longDescription)}</p>
@@ -277,13 +348,15 @@
         <div class="modal-links">${links.join("")}</div>
       `;
 
-      body.querySelectorAll("[data-thumb]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const hero = document.getElementById("modalHero");
-          if (hero) hero.src = btn.getAttribute("data-thumb");
-          body.querySelectorAll("[data-thumb]").forEach((b) => b.classList.remove("is-active"));
-          btn.classList.add("is-active");
-        });
+      this.galleryImages = images;
+      this.galleryIndex = 0;
+      this.galleryTitle = project.title;
+
+      body.querySelectorAll("[data-gallery-step]").forEach((btn) => {
+        btn.addEventListener("click", () => this.showGallery(this.galleryIndex + Number(btn.getAttribute("data-gallery-step"))));
+      });
+      body.querySelectorAll("[data-thumb-index]").forEach((btn) => {
+        btn.addEventListener("click", () => this.showGallery(Number(btn.getAttribute("data-thumb-index"))));
       });
 
       const modal = document.getElementById("projectModal");
@@ -292,11 +365,29 @@
       document.body.classList.add("modal-open");
     },
 
+    showGallery(index) {
+      if (!this.galleryImages.length) return;
+      this.galleryIndex = (index + this.galleryImages.length) % this.galleryImages.length;
+      const hero = document.getElementById("modalHero");
+      const count = document.getElementById("galleryCount");
+      if (hero) {
+        hero.src = this.galleryImages[this.galleryIndex];
+        hero.alt = (this.galleryTitle || "Project") + " screenshot " + (this.galleryIndex + 1);
+      }
+      if (count) count.textContent = this.galleryIndex + 1 + " / " + this.galleryImages.length;
+      document.querySelectorAll("#modalBody [data-thumb-index]").forEach((btn) => {
+        btn.classList.toggle("is-active", Number(btn.getAttribute("data-thumb-index")) === this.galleryIndex);
+      });
+    },
+
     closeModal() {
       const modal = document.getElementById("projectModal");
       modal.classList.remove("is-open");
       modal.hidden = true;
       document.body.classList.remove("modal-open");
+      this.galleryImages = [];
+      this.galleryIndex = 0;
+      this.galleryTitle = "";
     },
 
     renderWork() {
@@ -307,15 +398,19 @@
             const job = group.roles[0];
             const extra = job.partnerLogo ? " has-partner" : "";
             return `
-          <article class="timeline-item job-card reveal${extra}">
+          <article class="timeline-item job-card reveal is-collapsed${extra}" data-expando>
             <header class="job-head">
               ${jobLogos(job)}
-              <div>
+              <div class="job-copy">
                 <h3>${escapeHtml(job.position)}</h3>
+                ${jobHeadline(job)}
                 ${jobWhen(job)}
               </div>
+              ${expandButton()}
             </header>
             <div class="job-body">
+              ${jobInsights(job)}
+              ${jobSummary(job)}
               <ul>${job.responsibilities.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
               ${roleSkills(job)}
             </div>
@@ -329,18 +424,45 @@
             .join("");
 
           return `
-          <article class="company-card reveal">
+          <article class="company-card reveal is-collapsed" data-expando>
             <header class="company-head">
-              <img src="${escapeHtml(group.logo)}" alt="${escapeHtml(group.company)}" />
-              <div>
+              ${jobLogos(newest)}
+              <div class="job-copy">
                 <h3>${escapeHtml(group.company)}</h3>
-                <p class="when">${escapeHtml(group.location)} · ${escapeHtml(dateRange(oldest.startDate, newest.endDate))}</p>
+                <p class="when">${escapeHtml([group.location, dateRange(oldest.startDate, newest.endDate), jobType(newest)].filter(Boolean).join(" · "))}</p>
+                ${jobSite(newest)}
               </div>
+              ${expandButton()}
             </header>
             <ol class="role-path">${roles}</ol>
           </article>`;
         })
         .join("");
+      this.bindExpandos();
+    },
+
+    bindExpandos() {
+      const root = document.getElementById("workTimeline");
+      if (!root) return;
+      root.querySelectorAll("[data-expando]").forEach((card) => {
+        const btn = card.querySelector(".expando-btn");
+        const header = card.querySelector(".job-head, .company-head");
+        if (!btn || !header) return;
+        const setOpen = (open) => {
+          card.classList.toggle("is-open", open);
+          card.classList.toggle("is-collapsed", !open);
+          btn.setAttribute("aria-expanded", String(open));
+          btn.setAttribute("aria-label", open ? "Hide details" : "Show details");
+        };
+        btn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          setOpen(!card.classList.contains("is-open"));
+        });
+        header.addEventListener("click", (event) => {
+          if (event.target.closest("a")) return;
+          setOpen(!card.classList.contains("is-open"));
+        });
+      });
     },
 
     renderEducation() {
@@ -382,7 +504,21 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") PortfolioUI.closeModal();
+    const modal = document.getElementById("projectModal");
+    const open = modal && modal.classList.contains("is-open");
+    if (event.key === "Escape") {
+      PortfolioUI.closeModal();
+      return;
+    }
+    if (!open || PortfolioUI.galleryImages.length < 2) return;
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      PortfolioUI.showGallery(PortfolioUI.galleryIndex + 1);
+    }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      PortfolioUI.showGallery(PortfolioUI.galleryIndex - 1);
+    }
   });
 
   global.PortfolioUI = PortfolioUI;

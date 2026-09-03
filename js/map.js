@@ -44,6 +44,7 @@
     });
 
     data.projects.forEach((project) => {
+      if (project.showOnMap === false) return;
       features.push({
         id: "project-" + project.id,
         name: project.title,
