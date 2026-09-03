@@ -212,44 +212,6 @@
   color: var(--text-muted);
 }
 
-.map-section .map-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 1rem;
-  min-height: 520px;
-}
-
-.map-frame {
-  position: relative;
-  min-height: 520px;
-}
-
-.map-view {
-  height: 520px;
-  width: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #d9dee4;
-}
-
-.map-view .esri-view {
-  height: 100%;
-  width: 100%;
-}
-
-.map-error {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 2rem;
-  text-align: center;
-  color: var(--text-muted);
-  z-index: 3;
-  pointer-events: none;
-}
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -311,16 +273,6 @@
   .skills-grid {
     grid-template-columns: 1fr 1fr;
   }
-
-  .map-section .map-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .map-frame,
-  .map-view {
-    min-height: 420px;
-    height: 420px;
-  }
 }
 
 @media (max-width: 767px) {
@@ -368,12 +320,6 @@
 
   .profile-wrap {
     order: -1;
-  }
-
-  .map-frame,
-  .map-view {
-    min-height: 380px;
-    height: 380px;
   }
 
   .section {

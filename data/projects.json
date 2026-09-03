@@ -271,7 +271,7 @@
       "company": "Upwork",
       "status": "completed",
       "featured": true,
-      "showOnMap": false,
+      "showOnMap": true,
       "description": "A large-scale origin-destination cost matrix for 97 U.S. cities in ArcGIS Pro Network Analyst, computing neighborhood-to-neighborhood travel times on a custom road network.",
       "longDescription": "I built this as an Upwork freelance project in the GIS Analyst role, focused on network analysis and spatial data processing. The work covers 97 U.S. cities. I used a custom road network with pre-calculated travel-time costs and a neighborhood point layer for each city, built a Network Dataset, and ran OD Cost Matrix analysis so every neighborhood pair within a city received a travel time. The output was tens of millions of OD records, including a merged table of about 57 million rows, delivered as geodatabases, shapefiles, and Excel schema reports. A follow-up project extended and refined the original analysis. The client rated the work 5.0 out of 5.",
       "technologies": [
@@ -310,7 +310,8 @@
         "latitude": 39.8283,
         "longitude": -98.5795,
         "name": "United States"
-      }
+      },
+      "mapLabel": "OD Matrix"
     },
     {
       "id": "ameriwater-territory-map",
@@ -321,7 +322,7 @@
       "company": "Upwork",
       "status": "completed",
       "featured": true,
-      "showOnMap": false,
+      "showOnMap": true,
       "description": "An ArcGIS web app that maps AmeriWater dealer coverage across 854 ZIP3 territories, with region filters, dealer coloring, and a full-screen map workspace.",
       "longDescription": "I built this dealer territory map as an Upwork freelance project for AmeriWater. It is a full-viewport ArcGIS 4.32 app that draws real ZIP boundaries from Esri's USA Boundaries service and colors each ZIP3 by dealer. Four sales regions sit as pills at the top: Brian Bates, Dave Tholin, Tommy LoVoi, and Med Water | Bates. You can select more than one region or state, switch Primary / Secondary / Show All dealer views, and click a territory for region, ZIP, and account details, including a Strategic badge where it applies. A bottom toolbar holds layers, search, basemaps, labels, scale, and a light or liquid-glass theme. Preferences stay in the browser. Administrators can refresh the 854 ZIP3 records from a CSV and deploy an updated data file.",
       "technologies": [
@@ -359,7 +360,8 @@
         "latitude": 39.8283,
         "longitude": -98.5795,
         "name": "United States"
-      }
+      },
+      "mapLabel": "AmeriWater"
     },
     {
       "id": "gt-agroptics",
@@ -370,7 +372,7 @@
       "company": "Gulf Terminal",
       "status": "completed",
       "featured": true,
-      "showOnMap": false,
+      "showOnMap": true,
       "description": "The interactive map for Agroptics: growers draw farm fields, then view Planet, Sentinel, Landsat, and WaPOR crop and water layers inside the Gulf Terminal platform.",
       "longDescription": "Agroptics is Gulf Terminal's satellite irrigation platform. Growers define field boundaries, send that geometry to the backend, and then read crop and water data on the same map. My main work was the map itself. I wrote the full Leaflet front end in vanilla JavaScript, with no framework, so the same map can open in add-field, edit-field, and season-detail screens. Add and edit modes cover the field lifecycle: draw a polygon, circle, or rectangle, or upload GeoJSON, KML, KMZ, or Shapefile. You can edit vertices, split a field, delete it, catch overlaps, and keep area under a limit. Display mode is read-only. It loads satellite index rasters with a color legend, plus measure, search, geolocation, and download. The dashboard map switches Planet, Sentinel, Landsat, and WaPOR, then layers such as water demand, crop vigor, fractional cover, NDVI, MSAVI, and ETc. Behind the map, I wrote the Planet satellite processing in Python, including the AWS steps. The team converted that code to .NET for production. The map still talks to the backend through init, setFeatures, and getAllFeatures so field geometry and metadata stay with the rest of the Agroptics app.",
       "technologies": [
@@ -412,54 +414,8 @@
         "latitude": 40.5853,
         "longitude": -105.0844,
         "name": "Colorado, USA"
-      }
-    },
-    {
-      "id": "esri-library",
-      "title": "esri-Library (APIs)",
-      "subtitle": "Dynamic GIS library for enterprise solutions",
-      "category": "professional",
-      "year": "2024",
-      "company": "Gulf Terminal",
-      "status": "completed",
-      "featured": true,
-      "description": "An API library on the ArcGIS Maps SDK for JavaScript for building enterprise GIS web apps with spatial analysis, drawing, and data storage.",
-      "longDescription": "I built an Esri library on the ArcGIS API for JavaScript for Gulf Terminal. The library takes a structured data object and exposes functions that display, draw, or store spatial data and support other spatial workflows. Core widgets ship by default, and additional widgets can be added as needed.",
-      "technologies": [
-        "ArcGIS API for JavaScript",
-        "ArcGIS Maps SDK",
-        "TypeScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "SQL Server"
-      ],
-      "features": [
-        "Custom widget development framework",
-        "Advanced spatial analysis tools",
-        "2D and 3D visualization",
-        "Database integration and spatial data storage",
-        "Default widgets with optional extras"
-      ],
-      "images": [
-        "images/esri-library.png",
-        "images/esri-library-1.png",
-        "images/esri-library-2.png"
-      ],
-      "demoUrl": null,
-      "githubUrl": null,
-      "documentationUrl": "de/index.html",
-      "tags": [
-        "Enterprise",
-        "API Development",
-        "Library Development",
-        "3D GIS"
-      ],
-      "location": {
-        "latitude": 31.0409,
-        "longitude": 31.3785,
-        "name": "Mansoura, Egypt"
-      }
+      },
+      "mapLabel": "Agroptics"
     },
     {
       "id": "cop27-sharm",
@@ -502,7 +458,9 @@
         "latitude": 27.9158,
         "longitude": 34.33,
         "name": "Sharm El-Sheikh, Egypt"
-      }
+      },
+      "showOnMap": true,
+      "mapLabel": "COP27"
     },
     {
       "id": "geowarehouse-solutions",
@@ -552,91 +510,9 @@
         "latitude": 30.0444,
         "longitude": 31.2357,
         "name": "Cairo, Egypt"
-      }
-    },
-    {
-      "id": "clustering-analysis",
-      "title": "Clustering",
-      "subtitle": "Point clustering visualization",
-      "category": "personal",
-      "year": "2024",
-      "company": "Personal project",
-      "status": "completed",
-      "featured": false,
-      "description": "A learning project on FeatureReductionCluster for dense point layers in the ArcGIS API for JavaScript.",
-      "longDescription": "A learning project on point clustering with the ArcGIS API for JavaScript. FeatureReductionCluster groups nearby features and sizes symbols by count, which cuts clutter in dense point layers. I also built a FeatureLayer from client-side features, including the schema the API requires.",
-      "technologies": [
-        "ArcGIS API for JavaScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3"
-      ],
-      "features": [
-        "Dynamic point clustering",
-        "Proportional symbol sizing",
-        "Client-side FeatureLayer creation",
-        "Interactive cluster exploration"
-      ],
-      "images": [
-        "images/clustring.png",
-        "images/clustring-1.png",
-        "images/clustring-2.png",
-        "images/clustring-3.png"
-      ],
-      "demoUrl": "https://ashrafayman219.github.io/Clustring/",
-      "githubUrl": "https://github.com/ashrafayman219/Clustring",
-      "tags": [
-        "Data Visualization",
-        "Learning Project",
-        "Clustering"
-      ],
-      "location": {
-        "latitude": 31.0365,
-        "longitude": 31.372,
-        "name": "Mansoura, Egypt"
-      }
-    },
-    {
-      "id": "city-filtering",
-      "title": "City Filtering",
-      "subtitle": "Regional city data visualization",
-      "category": "personal",
-      "year": "2023",
-      "company": "Personal project",
-      "status": "completed",
-      "featured": false,
-      "description": "An ArcGIS web app that filters world cities by region, with class-break renderers, charts, and map widgets.",
-      "longDescription": "A learning project that maps world cities and filters them by region. It uses class-break renderers, esriRequest, and charting libraries, plus legend, measurement, and basemap gallery widgets.",
-      "technologies": [
-        "ArcGIS API for JavaScript",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Chart.js"
-      ],
-      "features": [
-        "Regional city filtering",
-        "Class-break renderers",
-        "Legend, measurement, and basemap gallery",
-        "External chart integration"
-      ],
-      "images": [
-        "images/city-filltering.png",
-        "images/CF-1.png",
-        "images/CF-2.png"
-      ],
-      "demoUrl": "https://ashrafayman219.github.io/City-Selection.github.io/",
-      "githubUrl": "https://github.com/ashrafayman219/City-Selection.github.io",
-      "tags": [
-        "Data Filtering",
-        "Global Data",
-        "Learning Project"
-      ],
-      "location": {
-        "latitude": 31.0452,
-        "longitude": 31.385,
-        "name": "Mansoura, Egypt"
-      }
+      },
+      "showOnMap": true,
+      "mapLabel": "Geowarehouse"
     }
   ],
   "skills": {

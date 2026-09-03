@@ -129,8 +129,7 @@
 .skill-card,
 .contact-card,
 .timeline-item,
-.company-card,
-.map-sidebar {
+.company-card {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -535,114 +534,6 @@
   letter-spacing: 0.06em;
 }
 
-.map-sidebar {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-.map-search input {
-  width: 100%;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  border-radius: var(--radius-sm);
-  padding: 0.55rem 0.7rem;
-  margin-bottom: 0.75rem;
-}
-
-.location-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  max-height: 420px;
-}
-
-.location-list button {
-  width: 100%;
-  text-align: left;
-  border: 0;
-  background: transparent;
-  color: var(--text);
-  padding: 0.65rem 0.25rem;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-}
-
-.location-list button:hover,
-.location-list button.is-active {
-  color: var(--accent);
-}
-
-.location-list small {
-  display: block;
-  color: var(--text-muted);
-}
-
-.legend {
-  position: absolute;
-  left: 0.75rem;
-  bottom: 2.1rem;
-  z-index: 2;
-  background: var(--map-overlay);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.65rem 0.8rem;
-  font-size: 0.82rem;
-}
-
-.legend span {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.2rem;
-}
-
-.legend i {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.legend .work {
-  background: var(--pin-work);
-}
-
-.legend .project {
-  background: var(--pin-project);
-}
-
-.legend .education {
-  background: var(--pin-education);
-  border-radius: 2px;
-}
-
-.basemap-switch {
-  position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
-  z-index: 2;
-  display: flex;
-  gap: 0.35rem;
-}
-
-.basemap-switch button {
-  background: var(--map-overlay);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 0.35rem 0.7rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
-.basemap-switch button.is-active {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .modal {
   position: fixed;
   inset: 0;
@@ -788,9 +679,5 @@ body.modal-open {
 
   .role-path {
     padding-left: 0.15rem;
-  }
-
-  .location-list {
-    max-height: 220px;
   }
 }
