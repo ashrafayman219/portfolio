@@ -19,7 +19,7 @@
       "github": "https://github.com/ashrafayman219",
       "linkedin": "https://www.linkedin.com/in/ashraf-ayman"
     },
-    "about": "I build GIS software — from ArcGIS web apps and spatial APIs to location-intelligence workflows. My work sits at the intersection of geo-informatics, web development, and .NET, and I care about shipping tools that help people see and act on spatial data.",
+    "about": "I build GIS software, from ArcGIS web apps and spatial APIs to location-intelligence workflows. My work sits at the intersection of geo-informatics, web development, and .NET, and I care about shipping tools that help people see and act on spatial data.",
     "cvUrl": "files/Ashraf Ayman CV.pdf",
     "resumeUrl": "files/Ashraf Ayman resume.pdf",
     "goal": "I want to grow as a GIS developer in a team that values technical depth and the chance to keep learning."
@@ -74,6 +74,7 @@
       "startDate": "May 2023",
       "endDate": "Present",
       "location": "Mansoura, Egypt",
+      "employmentType": "Full-time",
       "logo": "images/GT.png",
       "latitude": 31.0409,
       "longitude": 31.3785,
@@ -85,7 +86,35 @@
         "Update database designs as requirements change.",
         "Test systems and review results with project managers.",
         "Write source code, run validation tests, and debug issues as they appear."
-      ]
+      ],
+      "skills": ["ArcGIS Maps SDK", "JavaScript", "SQL Server", "PostgreSQL"]
+    },
+    {
+      "id": "aic",
+      "company": "Applied Innovation Center (AIC)",
+      "position": "Team Leader",
+      "startDate": "January 2024",
+      "endDate": "December 2024",
+      "location": "Smart Village, Giza, Egypt",
+      "employmentType": "Part-time",
+      "workMode": "Remote",
+      "logo": "images/aic_logo.png",
+      "partnerLogo": "images/وزارة_الاتصالات_وتكنولوجيا_المعلومات.png",
+      "partnerName": "Ministry of Communications and Information Technology",
+      "website": "https://aic.gov.eg/",
+      "logoFill": true,
+      "showOnMap": false,
+      "latitude": 30.0722,
+      "longitude": 31.0218,
+      "responsibilities": [
+        "Team leader for about one year in 2024 on a large Google Earth Pro project, annotating study areas of about 1 km.",
+        "Drew polygons around specific objects, green land, agriculture, desert crops, and urban areas, then labeled them for crop and land-use classification.",
+        "Reviewed the team's results and prepared reports for the supervisor.",
+        "Critical assignment with the Ministry of Communications and Information Technology, adding national-scale government geospatial work to this experience.",
+        "Supported AIC agriculture decision-support work: classifying land use and labeling strategic crops so maps could inform planning, subsidies, and food security.",
+        "Supported satellite-based mapping and urban classification: tracking change across industrial zones, new cities, informal settlements, and agricultural land."
+      ],
+      "skills": ["Google Earth Pro", "Land-use classification", "Crop annotation", "Team leadership"]
     },
     {
       "id": "edge-pro-developer",
@@ -94,6 +123,7 @@
       "startDate": "June 2022",
       "endDate": "February 2023",
       "location": "Cairo, Egypt",
+      "employmentType": "Full-time",
       "logo": "images/edge.jpg",
       "latitude": 30.0444,
       "longitude": 31.2357,
@@ -105,7 +135,8 @@
         "Used Hexagon technologies and ERDAS Imagine.",
         "Coordinated with external stakeholders.",
         "Collaborated with developers and architects."
-      ]
+      ],
+      "skills": ["GeoServer", "ERDAS Imagine", "ArcGIS Server", "Python", "SQL Server"]
     },
     {
       "id": "edge-pro-specialist",
@@ -114,17 +145,19 @@
       "startDate": "April 2022",
       "endDate": "June 2022",
       "location": "Cairo, Egypt",
+      "employmentType": "Full-time",
       "logo": "images/edge.jpg",
       "latitude": 30.0488,
       "longitude": 31.2412,
       "responsibilities": [
-        "Mapped spatial data to find trends and patterns.",
+        "Worked on GIS integration for military surveying and military-space workflows.",
         "Produced geographic reports and data visualizations.",
         "Built mapping tools and applications.",
         "Applied GIS fundamentals: data formats, projections, editing, and georeferencing.",
         "Reviewed GIS data for accuracy and standardized geographic datasets.",
         "Worked with geospatial databases."
-      ]
+      ],
+      "skills": ["GIS", "Spatial analysis", "Georeferencing"]
     }
   ],
   "projects": [
@@ -164,7 +197,7 @@
     },
     {
       "id": "cop27-sharm",
-      "title": "COP27 — Sharm El-Sheikh",
+      "title": "COP27, Sharm El-Sheikh",
       "subtitle": "Real-time green-area monitoring",
       "category": "professional",
       "year": "2022",

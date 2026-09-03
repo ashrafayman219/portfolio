@@ -30,6 +30,7 @@
     const features = [];
 
     data.workExperience.forEach((job) => {
+      if (job.showOnMap === false) return;
       features.push({
         id: "work-" + job.id,
         name: job.company,
@@ -103,6 +104,23 @@
         console.error(error);
         this.showError("The map could not load. Check your connection and try again.");
       }
+    },
+
+    keepPageFocus() {
+      const root = this.view && this.view.container;
+      if (!root) return;
+
+      const blurIfMapHoldsFocus = () => {
+        if (root.contains(document.activeElement)) document.activeElement.blur();
+      };
+
+      blurIfMapHoldsFocus();
+      requestAnimationFrame(blurIfMapHoldsFocus);
+      setTimeout(blurIfMapHoldsFocus, 50);
+      setTimeout(blurIfMapHoldsFocus, 250);
+
+      const surface = root.querySelector(".esri-view-surface");
+      if (surface) surface.setAttribute("tabindex", "-1");
     },
 
     showError(message) {
@@ -212,6 +230,7 @@
       });
 
       await this.view.when();
+      this.keepPageFocus();
 
       this.view.on("click", async (event) => {
         const hit = await this.view.hitTest(event, { include: this.graphics });

@@ -38,20 +38,23 @@
         });
       });
 
-      const sections = document.querySelectorAll("main section[id]");
-      const spy = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const id = entry.target.id;
-            links.querySelectorAll("a").forEach((a) => {
-              a.classList.toggle("is-active", a.getAttribute("data-section") === id);
-            });
-          });
-        },
-        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-      );
-      sections.forEach((section) => spy.observe(section));
+      const sections = [...document.querySelectorAll("main section[id]")];
+      const setActive = (id) => {
+        links.querySelectorAll("a").forEach((a) => {
+          a.classList.toggle("is-active", a.getAttribute("data-section") === id);
+        });
+      };
+      const updateSpy = () => {
+        const header = document.querySelector(".site-header");
+        const offset = (header ? header.offsetHeight : 0) + 12;
+        let current = sections[0] ? sections[0].id : "home";
+        sections.forEach((section) => {
+          if (section.getBoundingClientRect().top - offset <= 0) current = section.id;
+        });
+        setActive(current);
+      };
+      window.addEventListener("scroll", updateSpy, { passive: true });
+      updateSpy();
     },
 
     initBackToTop() {

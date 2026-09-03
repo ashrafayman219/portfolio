@@ -18,8 +18,8 @@
   --radius-sm: 8px;
   --nav-h: 4.25rem;
   --container: 1120px;
-  --font: "Source Sans 3", "Segoe UI", sans-serif;
-  --font-display: "Fraunces", Georgia, serif;
+  --font: "Noto Sans", "Segoe UI", sans-serif;
+  --font-display: var(--font);
   --ease: 0.22s ease;
   --z-nav: 40;
   --z-modal: 60;

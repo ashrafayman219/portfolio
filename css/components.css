@@ -129,6 +129,7 @@
 .skill-card,
 .contact-card,
 .timeline-item,
+.company-card,
 .map-sidebar {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
@@ -175,12 +176,85 @@
   align-items: start;
 }
 
-.timeline-item img {
+.timeline-item.job-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.job-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.job-head .logo-pair,
+.job-head .logo-frame {
+  flex-shrink: 0;
+}
+
+.timeline-item > img {
   width: 4.5rem;
   height: 4.5rem;
   object-fit: contain;
+  background: transparent;
+}
+
+.logo-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   background: #fff;
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 10px rgba(28, 40, 52, 0.08);
+}
+
+.logo-frame-circle {
+  width: 4.35rem;
+  height: 4.35rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.logo-frame-circle.logo-frame-fill {
+  padding: 0.22rem;
+}
+
+.logo-frame-pill {
+  height: 4.35rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+}
+
+.logo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo-frame-fill img {
+  transform: scale(1.28);
+}
+
+.logo-frame-pill img {
+  width: auto;
+  max-width: 9.5rem;
+}
+
+[data-theme="dark"] .logo-frame {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+.job-link {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
 }
 
 .timeline-item h3 {
@@ -191,14 +265,109 @@
 .timeline-item .when {
   color: var(--text-muted);
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.2rem;
 }
 
-.timeline-item ul {
+.timeline-item ul,
+.role-item ul {
   margin: 0;
   padding-left: 1.1rem;
   color: var(--text-muted);
   font-size: 0.95rem;
+}
+
+.timeline-item ul {
+  list-style-type: disc;
+}
+
+.role-item ul {
+  list-style-type: square;
+}
+
+.company-head {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.company-head img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  background: #fff;
+  border-radius: var(--radius-sm);
+}
+
+.company-head h3 {
+  margin: 0 0 0.15rem;
+  font-size: 1.1rem;
+}
+
+.company-head .when,
+.role-item .when {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+}
+
+.role-path {
+  list-style: none;
+  margin: 0rem 0 0;
+  padding: 0 0 0 calc(4.5rem + 1rem);
+}
+
+.role-item {
+  position: relative;
+  padding: 0 0 1.35rem 1.35rem;
+}
+
+.role-item:last-child {
+  padding-bottom: 0;
+}
+
+.role-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--text-muted);
+  z-index: 1;
+}
+
+.role-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 1.05em;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.role-item h4 {
+  margin: 0 0 0.15rem;
+  font-family: var(--font);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.role-skills {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0.7rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.role-skills svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
 }
 
 .contact-list {
@@ -419,8 +588,21 @@ body.modal-open {
 }
 
 @media (max-width: 767px) {
-  .timeline-item {
+  .timeline-item:not(.job-card),
+  .company-head {
     grid-template-columns: 3.25rem 1fr;
+  }
+
+  .job-head {
+    flex-wrap: wrap;
+  }
+
+  .logo-frame-pill img {
+    max-width: min(9.5rem, 52vw);
+  }
+
+  .role-path {
+    padding-left: 0.15rem;
   }
 
   .location-list {

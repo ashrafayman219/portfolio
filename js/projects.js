@@ -16,6 +16,93 @@
       .replace(/"/g, "&quot;");
   }
 
+  const MONTHS = {
+    January: "Jan",
+    February: "Feb",
+    March: "Mar",
+    April: "Apr",
+    May: "May",
+    June: "Jun",
+    July: "Jul",
+    August: "Aug",
+    September: "Sep",
+    October: "Oct",
+    November: "Nov",
+    December: "Dec"
+  };
+
+  function shortDate(value) {
+    return String(value ?? "").replace(
+      /January|February|March|April|May|June|July|August|September|October|November|December/g,
+      (month) => MONTHS[month]
+    );
+  }
+
+  function dateRange(start, end) {
+    return shortDate(start) + " - " + shortDate(end);
+  }
+
+  function groupWork(jobs) {
+    const groups = [];
+    (jobs || []).forEach((job) => {
+      const prev = groups[groups.length - 1];
+      if (prev && prev.company === job.company) prev.roles.push(job);
+      else {
+        groups.push({
+          company: job.company,
+          location: job.location,
+          logo: job.logo,
+          roles: [job]
+        });
+      }
+    });
+    return groups;
+  }
+
+  function jobLogos(job) {
+    const fill = job.logoFill ? " logo-frame-fill" : "";
+    const main = `<span class="logo-frame logo-frame-circle${fill}"><img src="${escapeHtml(job.logo)}" alt="${escapeHtml(job.company)}" /></span>`;
+    if (!job.partnerLogo) return main;
+    return `<div class="logo-pair">
+      ${main}
+      <span class="logo-frame logo-frame-pill"><img src="${escapeHtml(job.partnerLogo)}" alt="${escapeHtml(job.partnerName || "")}" /></span>
+    </div>`;
+  }
+
+  function jobType(job) {
+    return [job.employmentType, job.workMode].filter(Boolean).join(" · ");
+  }
+
+  function jobWhen(job) {
+    const line = [job.company, job.location, dateRange(job.startDate, job.endDate), jobType(job)]
+      .filter(Boolean)
+      .join(" · ");
+    const partner = job.partnerName ? `<p class="when">${escapeHtml(job.partnerName)}</p>` : "";
+    const site = job.website
+      ? `<p class="job-link"><a href="${escapeHtml(job.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(job.website.replace(/^https?:\/\//, "").replace(/\/$/, ""))}</a></p>`
+      : "";
+    return `<p class="when">${escapeHtml(line)}</p>${partner}${site}`;
+  }
+
+  function roleSkills(job) {
+    if (!job.skills || !job.skills.length) return "";
+    return `<p class="role-skills">
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 2.5 21.5 12 12 21.5 2.5 12Z"/>
+      </svg>
+      <span>${job.skills.map(escapeHtml).join(", ")}</span>
+    </p>`;
+  }
+
+  function roleCopy(job) {
+    const when = [dateRange(job.startDate, job.endDate), jobType(job)].filter(Boolean).join(" · ");
+    return `
+      <h4>${escapeHtml(job.position)}</h4>
+      <p class="when">${escapeHtml(when)}</p>
+      <ul>${job.responsibilities.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      ${roleSkills(job)}`;
+  }
+
   const IMG_FALLBACK = "this.onerror=null;this.style.background='#d5dde4';this.removeAttribute('src');";
 
   const PortfolioUI = {
@@ -214,18 +301,45 @@
 
     renderWork() {
       const root = document.getElementById("workTimeline");
-      root.innerHTML = this.data.workExperience
-        .map(
-          (job) => `
-          <article class="timeline-item reveal">
-            <img src="${escapeHtml(job.logo)}" alt="${escapeHtml(job.company)}" />
-            <div>
-              <h3>${escapeHtml(job.position)}</h3>
-              <p class="when">${escapeHtml(job.company)} · ${escapeHtml(job.location)} · ${escapeHtml(job.startDate)} – ${escapeHtml(job.endDate)}</p>
+      root.innerHTML = groupWork(this.data.workExperience)
+        .map((group) => {
+          if (group.roles.length === 1) {
+            const job = group.roles[0];
+            const extra = job.partnerLogo ? " has-partner" : "";
+            return `
+          <article class="timeline-item job-card reveal${extra}">
+            <header class="job-head">
+              ${jobLogos(job)}
+              <div>
+                <h3>${escapeHtml(job.position)}</h3>
+                ${jobWhen(job)}
+              </div>
+            </header>
+            <div class="job-body">
               <ul>${job.responsibilities.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+              ${roleSkills(job)}
             </div>
-          </article>`
-        )
+          </article>`;
+          }
+
+          const newest = group.roles[0];
+          const oldest = group.roles[group.roles.length - 1];
+          const roles = group.roles
+            .map((job) => `<li class="role-item">${roleCopy(job)}</li>`)
+            .join("");
+
+          return `
+          <article class="company-card reveal">
+            <header class="company-head">
+              <img src="${escapeHtml(group.logo)}" alt="${escapeHtml(group.company)}" />
+              <div>
+                <h3>${escapeHtml(group.company)}</h3>
+                <p class="when">${escapeHtml(group.location)} · ${escapeHtml(dateRange(oldest.startDate, newest.endDate))}</p>
+              </div>
+            </header>
+            <ol class="role-path">${roles}</ol>
+          </article>`;
+        })
         .join("");
     },
 
