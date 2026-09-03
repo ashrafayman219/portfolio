@@ -38,7 +38,9 @@
         "longitude": 31.3785,
         "name": "Mansoura, Egypt"
       },
-      "honors": ["Honours in GIS and Remote Sensing, 2021"]
+      "honors": [
+        "Honours in GIS and Remote Sensing, 2021"
+      ]
     },
     {
       "id": "iti",
@@ -86,7 +88,15 @@
         "Write programming specifications and review results with project managers.",
         "Work with SQL Server and PostgreSQL, and debug production issues as they appear."
       ],
-      "skills": ["ArcGIS Maps SDK", "JavaScript", "Leaflet", "Mapbox", "Google Earth Studio", "SQL Server", "PostgreSQL"]
+      "skills": [
+        "ArcGIS Maps SDK",
+        "JavaScript",
+        "Leaflet",
+        "Mapbox",
+        "Google Earth Studio",
+        "SQL Server",
+        "PostgreSQL"
+      ]
     },
     {
       "id": "gulf-terminal",
@@ -109,7 +119,15 @@
         "Test systems and review results with project managers.",
         "Write source code, run validation tests, and debug issues as they appear."
       ],
-      "skills": ["ArcGIS Maps SDK", "JavaScript", "Leaflet", "Mapbox", "Google Earth Studio", "SQL Server", "PostgreSQL"]
+      "skills": [
+        "ArcGIS Maps SDK",
+        "JavaScript",
+        "Leaflet",
+        "Mapbox",
+        "Google Earth Studio",
+        "SQL Server",
+        "PostgreSQL"
+      ]
     },
     {
       "id": "upwork",
@@ -182,7 +200,12 @@
         "Supported AIC agriculture decision-support work: classifying land use and labeling strategic crops so maps could inform planning, subsidies, and food security.",
         "Supported satellite-based mapping and urban classification: tracking change across industrial zones, new cities, informal settlements, and agricultural land."
       ],
-      "skills": ["Google Earth Pro", "Land-use classification", "Crop annotation", "Team leadership"]
+      "skills": [
+        "Google Earth Pro",
+        "Land-use classification",
+        "Crop annotation",
+        "Team leadership"
+      ]
     },
     {
       "id": "edge-pro-developer",
@@ -204,7 +227,13 @@
         "Coordinated with external stakeholders.",
         "Collaborated with developers and architects."
       ],
-      "skills": ["GeoServer", "ERDAS Imagine", "ArcGIS Server", "Python", "SQL Server"]
+      "skills": [
+        "GeoServer",
+        "ERDAS Imagine",
+        "ArcGIS Server",
+        "Python",
+        "SQL Server"
+      ]
     },
     {
       "id": "edge-pro-specialist",
@@ -225,10 +254,64 @@
         "Reviewed GIS data for accuracy and standardized geographic datasets.",
         "Worked with geospatial databases."
       ],
-      "skills": ["GIS", "Spatial analysis", "Georeferencing"]
+      "skills": [
+        "GIS",
+        "Spatial analysis",
+        "Georeferencing"
+      ]
     }
   ],
   "projects": [
+    {
+      "id": "od-travel-time-matrix",
+      "title": "OD Travel Time Matrix, 97 US Cities",
+      "subtitle": "ArcGIS Pro Network Analyst",
+      "category": "professional",
+      "year": "2026",
+      "company": "Upwork",
+      "status": "completed",
+      "featured": true,
+      "showOnMap": false,
+      "description": "A large-scale origin-destination cost matrix for 97 U.S. cities in ArcGIS Pro Network Analyst, computing neighborhood-to-neighborhood travel times on a custom road network.",
+      "longDescription": "I built this as an Upwork freelance project in the GIS Analyst role, focused on network analysis and spatial data processing. The work covers 97 U.S. cities. I used a custom road network with pre-calculated travel-time costs and a neighborhood point layer for each city, built a Network Dataset, and ran OD Cost Matrix analysis so every neighborhood pair within a city received a travel time. The output was tens of millions of OD records, including a merged table of about 57 million rows, delivered as geodatabases, shapefiles, and Excel schema reports. A follow-up project extended and refined the original analysis. The client rated the work 5.0 out of 5.",
+      "technologies": [
+        "ArcGIS Pro",
+        "Network Analyst",
+        "Network Dataset",
+        "OD Cost Matrix",
+        "File geodatabase",
+        "Shapefile",
+        "Excel"
+      ],
+      "features": [
+        "OD Cost Matrix for 97 U.S. cities",
+        "Custom road network with pre-calculated travel-time costs",
+        "Neighborhood point layers per city",
+        "Network Dataset built in ArcGIS Pro",
+        "Travel time between every neighborhood pair within each city",
+        "Tens of millions of OD records, including a merged table of about 57 million rows",
+        "Deliverables: geodatabases, shapefiles, and Excel schema reports",
+        "Follow-up project to extend and refine the analysis",
+        "Client rating 5.0 out of 5"
+      ],
+      "images": [
+        "images/od-00.png",
+        "images/od-01.png"
+      ],
+      "demoUrl": null,
+      "githubUrl": null,
+      "tags": [
+        "Network Analyst",
+        "OD matrix",
+        "Travel time",
+        "ArcGIS Pro"
+      ],
+      "location": {
+        "latitude": 39.8283,
+        "longitude": -98.5795,
+        "name": "United States"
+      }
+    },
     {
       "id": "ameriwater-territory-map",
       "title": "AmeriWater Dealer Territory Map",
@@ -241,7 +324,13 @@
       "showOnMap": false,
       "description": "An ArcGIS web app that maps AmeriWater dealer coverage across 854 ZIP3 territories, with region filters, dealer coloring, and a full-screen map workspace.",
       "longDescription": "I built this dealer territory map as an Upwork freelance project for AmeriWater. It is a full-viewport ArcGIS 4.32 app that draws real ZIP boundaries from Esri's USA Boundaries service and colors each ZIP3 by dealer. Four sales regions sit as pills at the top: Brian Bates, Dave Tholin, Tommy LoVoi, and Med Water | Bates. You can select more than one region or state, switch Primary / Secondary / Show All dealer views, and click a territory for region, ZIP, and account details, including a Strategic badge where it applies. A bottom toolbar holds layers, search, basemaps, labels, scale, and a light or liquid-glass theme. Preferences stay in the browser. Administrators can refresh the 854 ZIP3 records from a CSV and deploy an updated data file.",
-      "technologies": ["ArcGIS API for JavaScript 4.32", "JavaScript", "HTML5", "CSS3", "Esri ZIP boundaries"],
+      "technologies": [
+        "ArcGIS API for JavaScript 4.32",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Esri ZIP boundaries"
+      ],
       "features": [
         "854 ZIP3 territories on real Esri ZIP geometry",
         "Four-region filter with multi-select pills",
@@ -260,11 +349,69 @@
       ],
       "demoUrl": null,
       "githubUrl": null,
-      "tags": ["ArcGIS", "Territory mapping", "Dealer network", "ZIP3"],
+      "tags": [
+        "ArcGIS",
+        "Territory mapping",
+        "Dealer network",
+        "ZIP3"
+      ],
       "location": {
         "latitude": 39.8283,
         "longitude": -98.5795,
         "name": "United States"
+      }
+    },
+    {
+      "id": "gt-agroptics",
+      "title": "Agroptics Field Maps",
+      "subtitle": "Leaflet maps for satellite irrigation",
+      "category": "professional",
+      "year": "2026",
+      "company": "Gulf Terminal",
+      "status": "completed",
+      "featured": true,
+      "showOnMap": false,
+      "description": "The interactive map for Agroptics: growers draw farm fields, then view Planet, Sentinel, Landsat, and WaPOR crop and water layers inside the Gulf Terminal platform.",
+      "longDescription": "Agroptics is Gulf Terminal's satellite irrigation platform. Growers define field boundaries, send that geometry to the backend, and then read crop and water data on the same map. My main work was the map itself. I wrote the full Leaflet front end in vanilla JavaScript, with no framework, so the same map can open in add-field, edit-field, and season-detail screens. Add and edit modes cover the field lifecycle: draw a polygon, circle, or rectangle, or upload GeoJSON, KML, KMZ, or Shapefile. You can edit vertices, split a field, delete it, catch overlaps, and keep area under a limit. Display mode is read-only. It loads satellite index rasters with a color legend, plus measure, search, geolocation, and download. The dashboard map switches Planet, Sentinel, Landsat, and WaPOR, then layers such as water demand, crop vigor, fractional cover, NDVI, MSAVI, and ETc. Behind the map, I wrote the Planet satellite processing in Python, including the AWS steps. The team converted that code to .NET for production. The map still talks to the backend through init, setFeatures, and getAllFeatures so field geometry and metadata stay with the rest of the Agroptics app.",
+      "technologies": [
+        "Leaflet.js",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Python",
+        "GeoTIFF",
+        "GeoJSON / KML / Shapefile",
+        "Planet imagery",
+        "WaPOR"
+      ],
+      "features": [
+        "Embeddable map for add, edit, and display screens",
+        "Draw polygon, circle, or rectangle field boundaries",
+        "Upload GeoJSON, KML, KMZ, or Shapefile",
+        "Edit vertices, split fields, delete, overlap checks, and an area limit",
+        "Read-only dashboards with measure, search, geolocation, and download",
+        "Planet, Sentinel, Landsat, and WaPOR sources on the season map",
+        "Satellite index overlays: water demand, crop vigor, fractional cover, NDVI, MSAVI, ETc",
+        "Category legend and date playback for index rasters",
+        "FAO WaPOR water-productivity layers in display mode",
+        "Python processing for Planet images on AWS, later converted to .NET"
+      ],
+      "images": [
+        "images/agroptics-02.png",
+        "images/agroptics-landpage.png"
+      ],
+      "demoUrl": null,
+      "githubUrl": null,
+      "tags": [
+        "Leaflet",
+        "Precision agriculture",
+        "Remote sensing",
+        "Field mapping"
+      ],
+      "location": {
+        "latitude": 40.5853,
+        "longitude": -105.0844,
+        "name": "Colorado, USA"
       }
     },
     {
@@ -278,7 +425,15 @@
       "featured": true,
       "description": "An API library on the ArcGIS Maps SDK for JavaScript for building enterprise GIS web apps with spatial analysis, drawing, and data storage.",
       "longDescription": "I built an Esri library on the ArcGIS API for JavaScript for Gulf Terminal. The library takes a structured data object and exposes functions that display, draw, or store spatial data and support other spatial workflows. Core widgets ship by default, and additional widgets can be added as needed.",
-      "technologies": ["ArcGIS API for JavaScript", "ArcGIS Maps SDK", "TypeScript", "JavaScript", "HTML5", "CSS3", "SQL Server"],
+      "technologies": [
+        "ArcGIS API for JavaScript",
+        "ArcGIS Maps SDK",
+        "TypeScript",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "SQL Server"
+      ],
       "features": [
         "Custom widget development framework",
         "Advanced spatial analysis tools",
@@ -294,7 +449,12 @@
       "demoUrl": null,
       "githubUrl": null,
       "documentationUrl": "de/index.html",
-      "tags": ["Enterprise", "API Development", "Library Development", "3D GIS"],
+      "tags": [
+        "Enterprise",
+        "API Development",
+        "Library Development",
+        "3D GIS"
+      ],
       "location": {
         "latitude": 31.0409,
         "longitude": 31.3785,
@@ -312,7 +472,14 @@
       "featured": true,
       "description": "GIS and remote-sensing work for COP27: pan-sharpened satellite imagery and a web app to monitor Sharm El-Sheikh’s green areas.",
       "longDescription": "Geospatial tools can show whether sustainability work is actually landing. For COP27 we used Hexagon solutions to track Sharm El-Sheikh’s green initiatives. I pan-sharpened satellite imagery to about 10 cm resolution and built a GIS web app so teams could read oxygen and carbon dioxide levels over time and catalogue newly planted trees.",
-      "technologies": ["ArcGIS API for JavaScript", "Remote Sensing", "ERDAS Imagine", "Python", "Satellite Imagery", "Hexagon Solutions"],
+      "technologies": [
+        "ArcGIS API for JavaScript",
+        "Remote Sensing",
+        "ERDAS Imagine",
+        "Python",
+        "Satellite Imagery",
+        "Hexagon Solutions"
+      ],
       "features": [
         "Near real-time environmental monitoring",
         "Pan-sharpening to about 10 cm resolution",
@@ -320,10 +487,17 @@
         "Tree cataloguing and renaturation tracking",
         "Decision-support web app"
       ],
-      "images": ["images/Sharm.png"],
+      "images": [
+        "images/Sharm.png"
+      ],
       "demoUrl": null,
       "githubUrl": null,
-      "tags": ["Environmental Monitoring", "Remote Sensing", "Climate Change", "COP27"],
+      "tags": [
+        "Environmental Monitoring",
+        "Remote Sensing",
+        "Climate Change",
+        "COP27"
+      ],
       "location": {
         "latitude": 27.9158,
         "longitude": 34.33,
@@ -341,7 +515,15 @@
       "featured": true,
       "description": "ITI final project: a GIS business web app for warehouse coverage, customer patterns, and branch decisions.",
       "longDescription": "A GIS-based business application for warehouse decisions, built as the ITI final project with Ahmed Ashraf, Ahmed Mesbah, and Shady Mamdouh. It analyzes spatial data over time so operators can see service coverage, customer patterns, delivery demand, and where a new branch might make sense. The stack was ArcGIS Enterprise (Online, Portal, Server) with Esri APIs and standard web technologies.",
-      "technologies": ["ArcGIS Enterprise", "ArcGIS Portal", "ArcGIS Server", "JavaScript", "HTML/CSS", "SQL", "Esri APIs"],
+      "technologies": [
+        "ArcGIS Enterprise",
+        "ArcGIS Portal",
+        "ArcGIS Server",
+        "JavaScript",
+        "HTML/CSS",
+        "SQL",
+        "Esri APIs"
+      ],
       "features": [
         "Warehouse location and coverage analysis",
         "Customer behavior tracking",
@@ -349,13 +531,23 @@
         "Time-series spatial analysis",
         "Support for new-branch decisions"
       ],
-      "images": ["images/website-screen.png"],
+      "images": [
+        "images/website-screen.png"
+      ],
       "demoUrl": "https://ashrafayman219.github.io/FINAL-PROJECT-ITI/",
       "githubUrl": null,
       "videoUrl": "https://ia601300.us.archive.org/22/items/demo_20240118/Demo.mp4",
       "presentationUrl": "https://medmansedu-my.sharepoint.com/:p:/g/personal/ashrafayman219_std_mans_edu_eg/ESbkYK_bwJJAkgtmCqlYw5MBtzzxjqizxEXD8scUM0bpFA?e=nVhtds",
-      "collaborators": ["Ahmed Ashraf", "Ahmed Mesbah", "Shady Mamdouh"],
-      "tags": ["Business Intelligence", "Warehouse Management", "Academic Project"],
+      "collaborators": [
+        "Ahmed Ashraf",
+        "Ahmed Mesbah",
+        "Shady Mamdouh"
+      ],
+      "tags": [
+        "Business Intelligence",
+        "Warehouse Management",
+        "Academic Project"
+      ],
       "location": {
         "latitude": 30.0444,
         "longitude": 31.2357,
@@ -373,7 +565,12 @@
       "featured": false,
       "description": "A learning project on FeatureReductionCluster for dense point layers in the ArcGIS API for JavaScript.",
       "longDescription": "A learning project on point clustering with the ArcGIS API for JavaScript. FeatureReductionCluster groups nearby features and sizes symbols by count, which cuts clutter in dense point layers. I also built a FeatureLayer from client-side features, including the schema the API requires.",
-      "technologies": ["ArcGIS API for JavaScript", "JavaScript", "HTML5", "CSS3"],
+      "technologies": [
+        "ArcGIS API for JavaScript",
+        "JavaScript",
+        "HTML5",
+        "CSS3"
+      ],
       "features": [
         "Dynamic point clustering",
         "Proportional symbol sizing",
@@ -388,7 +585,11 @@
       ],
       "demoUrl": "https://ashrafayman219.github.io/Clustring/",
       "githubUrl": "https://github.com/ashrafayman219/Clustring",
-      "tags": ["Data Visualization", "Learning Project", "Clustering"],
+      "tags": [
+        "Data Visualization",
+        "Learning Project",
+        "Clustering"
+      ],
       "location": {
         "latitude": 31.0365,
         "longitude": 31.372,
@@ -406,7 +607,13 @@
       "featured": false,
       "description": "An ArcGIS web app that filters world cities by region, with class-break renderers, charts, and map widgets.",
       "longDescription": "A learning project that maps world cities and filters them by region. It uses class-break renderers, esriRequest, and charting libraries, plus legend, measurement, and basemap gallery widgets.",
-      "technologies": ["ArcGIS API for JavaScript", "JavaScript", "HTML5", "CSS3", "Chart.js"],
+      "technologies": [
+        "ArcGIS API for JavaScript",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Chart.js"
+      ],
       "features": [
         "Regional city filtering",
         "Class-break renderers",
@@ -420,7 +627,11 @@
       ],
       "demoUrl": "https://ashrafayman219.github.io/City-Selection.github.io/",
       "githubUrl": "https://github.com/ashrafayman219/City-Selection.github.io",
-      "tags": ["Data Filtering", "Global Data", "Learning Project"],
+      "tags": [
+        "Data Filtering",
+        "Global Data",
+        "Learning Project"
+      ],
       "location": {
         "latitude": 31.0452,
         "longitude": 31.385,
@@ -430,37 +641,91 @@
   ],
   "skills": {
     "gis": [
-      { "name": "ArcGIS API for JavaScript" },
-      { "name": "ArcGIS Enterprise (Server, Portal, Online)" },
-      { "name": "ArcGIS Pro" },
-      { "name": "M.App Enterprise" },
-      { "name": "GeoServer" },
-      { "name": "QGIS" },
-      { "name": "Leaflet" },
-      { "name": "OpenLayers" },
-      { "name": "Mapbox" },
-      { "name": "Google Earth Studio" },
-      { "name": "PostGIS" },
-      { "name": "PostgreSQL" }
+      {
+        "name": "ArcGIS API for JavaScript"
+      },
+      {
+        "name": "ArcGIS Enterprise (Server, Portal, Online)"
+      },
+      {
+        "name": "ArcGIS Pro"
+      },
+      {
+        "name": "M.App Enterprise"
+      },
+      {
+        "name": "GeoServer"
+      },
+      {
+        "name": "QGIS"
+      },
+      {
+        "name": "Leaflet"
+      },
+      {
+        "name": "OpenLayers"
+      },
+      {
+        "name": "Mapbox"
+      },
+      {
+        "name": "Google Earth Studio"
+      },
+      {
+        "name": "PostGIS"
+      },
+      {
+        "name": "PostgreSQL"
+      }
     ],
     "programming": [
-      { "name": "JavaScript" },
-      { "name": "Python" },
-      { "name": "TypeScript" },
-      { "name": "C#" },
-      { "name": "ASP.NET Core" },
-      { "name": "Angular" },
-      { "name": "MS SQL Server" },
-      { "name": "SQL" },
-      { "name": "HTML/CSS" },
-      { "name": "Git and GitHub" },
-      { "name": "OOP" }
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "Python"
+      },
+      {
+        "name": "TypeScript"
+      },
+      {
+        "name": "C#"
+      },
+      {
+        "name": "ASP.NET Core"
+      },
+      {
+        "name": "Angular"
+      },
+      {
+        "name": "MS SQL Server"
+      },
+      {
+        "name": "SQL"
+      },
+      {
+        "name": "HTML/CSS"
+      },
+      {
+        "name": "Git and GitHub"
+      },
+      {
+        "name": "OOP"
+      }
     ],
     "remoteSensing": [
-      { "name": "ERDAS Imagine" },
-      { "name": "ENVI" },
-      { "name": "LIDAR processing" },
-      { "name": "Hexagon technologies" }
+      {
+        "name": "ERDAS Imagine"
+      },
+      {
+        "name": "ENVI"
+      },
+      {
+        "name": "LIDAR processing"
+      },
+      {
+        "name": "Hexagon technologies"
+      }
     ]
   },
   "metadata": {
